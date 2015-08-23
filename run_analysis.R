@@ -5,9 +5,6 @@ library(dplyr)
 library(data.table)
 library(reshape2)
 
-
-
-
 activitynames <- read.table("activity_labels.txt")
 variablenames <- read.table("features.txt")
 
@@ -39,16 +36,12 @@ colnames(allsubjects) <- c("subject ID")
 
 testandtrain <- rbind(testing,training)
 
-
-
 sheareddata <- testandtrain[,grep("mean|std", colnames(testandtrain))]
 
 alldata <- cbind(allsubjects,allactivity,sheareddata)
 
-
 meltalldata <- melt(alldata,id=c("subject ID","activity"),measure.vars=3:81)
-
 
 castalldata3 <- dcast(meltalldata, `subject ID` + activity ~ variable,mean)
 
-
+write.table(castalldata3, file="tidydata.txt",row.names = FALSE)
