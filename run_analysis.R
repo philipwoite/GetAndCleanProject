@@ -31,3 +31,15 @@ activitysubstitution <- c("1" = "walking", "2" = "walking upstairs", "3" = "walk
 testingactivity$activity <- activitysubstitution[str_sub(testingactivity$activity)]
 trainingactivity$activity <- activitysubstitution[str_sub(trainingactivity$activity)]
 
+allactivity <- rbind(testingactivity, trainingactivity)
+
+allsubjects <- rbind(testsubject,trainsubject)
+colnames(allsubjects) <- c("subject ID")
+
+testandtrain <- rbind(testing,training)
+
+
+
+sheareddata <- testandtrain[,grep("mean|std", colnames(testandtrain))]
+
+alldata <- cbind(allsubjects,allactivity,sheareddata)

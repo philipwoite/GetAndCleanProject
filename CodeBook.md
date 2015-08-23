@@ -42,6 +42,14 @@ Assign column names to testing and training data frames, using the **colnames** 
 
 Assign the column name of *activity* to the *testingactivity* and *trainingactivity* columns, in the same manner.
 
+Using **rbind** combine the testing and training activities (*testingactivity* and *trainingactivity*) to form *allactivity*.
+
+Using **rbind** combine the testing and training data frames (*testingactivity* and *trainingactivity*) to form *allactivity*.
+
+Using **cbind** combine *allactivity* with *alldata* to form a "new" *alldata*.
+
+*sheareddata* is a data frame where all columns that do not include the strings *"mean"* or *"std"* have been removed from the data frame *alldata*. This is accomplished by using the **grep** function.
+
 
 
 
