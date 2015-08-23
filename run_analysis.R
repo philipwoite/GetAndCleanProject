@@ -1,7 +1,8 @@
 # Philip M. Woite 2015-08-23
 # Coursera: Getting And Cleaning Data (Course start date 03 August 2015)
-
+library(tidyr)
 library(dplyr)
+library(data.table)
 library(reshape2)
 
 
@@ -43,3 +44,11 @@ testandtrain <- rbind(testing,training)
 sheareddata <- testandtrain[,grep("mean|std", colnames(testandtrain))]
 
 alldata <- cbind(allsubjects,allactivity,sheareddata)
+
+
+meltalldata <- melt(alldata,id=c("subject ID","activity"),measure.vars=3:81)
+
+
+castalldata3 <- dcast(meltalldata, `subject ID` + activity ~ variable,mean)
+
+
