@@ -54,17 +54,15 @@ Do the same naming (with **colnames** ) and combining (with **rbind** ) for *tes
 
 *sheareddata* is a data frame where all columns that do not include the strings *"mean"* or *"std"* have been removed from the data frame *testandtrain*. This is accomplished by using the **grep** function.
 
-Using **cbind** combine *allsubjects* and *allactivity* with *testandtrain* to form a new data frame: *alldata*.
+Using **cbind** combine *allsubjects* and *allactivity* with *sheareddata* to form a new data frame: *alldata*.
 
-Next rename the variable names (column names) 
+Next summarise the data frame:
 
-Next summarise the data frame
+Using melt, make a long data frame. Here the data frame *meltalldata* is created.
 
-Using melt, make a long data frame.
+Using dcast, summarise the data frame according to the subject ID **and** the activity (take note of the plus sign in the code to achieve this "double" summary). In this step the *castalldata3* data frame is created.
 
-Using dcast, summarise the data frame according to the subject ID **and** the activity (take note of the plus sign in the code to achieve this "double" summary).
-
-Finally export the data frame with **write.table**
+Finally export the data frame with **write.table**, writing the *castalldata3* data frame to simple text (*.txt).
 
 
 
